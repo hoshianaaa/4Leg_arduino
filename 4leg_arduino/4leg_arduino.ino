@@ -4,7 +4,7 @@
 
 #define DT 15
 
-#define DEBUG 1
+#define GYRO_DEBUG 0
 
 Servo servo[12];
 const int LED_R = 20;
@@ -30,7 +30,13 @@ void flash() {
   }
 
   GyroRead(DT);
-  Serial.println(GyroDeg[0]);
+#ifdef GYRO_DEBUG
+  for (int i = 0; i < 3; i++) {
+    Serial.print(GyroDeg[i]);
+    Serial.print(" ");
+  }
+  Serial.println("");
+#endif
 }
 
 
